@@ -39,5 +39,11 @@ angular.module('login.controllers', ['ngCordova'])
       });
   }
 
+   $scope.Acceso = function(correo, clave){
+        $scope.loginData.username  = correo;
+        $scope.loginData.password = clave;
+    
+    }
+
 
 });
