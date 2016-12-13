@@ -44,6 +44,12 @@ angular.module('login.controllers', ['ngCordova'])
         $scope.loginData.password = clave;
     
     }
+      $scope.Registro = function()
+  {
+  var user = firebase.auth().createUserWithEmailAndPassword($scope.loginData.username,$scope.loginData.password);
+ // alert("Registrado Exitosamente");
+  $state.go('app.autor');
+  }
 
 
 });

@@ -34,6 +34,9 @@
         <button ng-if="!FormLogin.$invalid" ng-click="Login()" class="botonLogin"><div align="center"><img src="img/CandadoLogin.png" width="20" height="20"></img> &nbsp Log in &nbsp <img src="img/CandadoLogin.png" width="20" height="20"></img></div></button>
       </label><br>
     <center><ion-spinner  icon="bubbles" class="spinner spinner-energized" ng-if="Funciona==false" ></ion-spinner></center>
+             <label class="item">
+          <button class="button button-block button-positive" ng-click="Registro()" ng-disabled="FormRegistro.$invalid">Registrarse</button>
+        </label>
 
     </form>
       <div >
