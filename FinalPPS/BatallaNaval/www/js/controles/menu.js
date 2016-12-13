@@ -3,7 +3,7 @@ angular.module('menu.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout,$state) {
 
-	/*$scope.UsuarioLogueado = {};
+	$scope.UsuarioLogueado = {};
   	$scope.UsuarioLogueado=firebase.auth();
   	console.info("usuario",$scope.UsuarioLogueado);
 	//console.info($scope.UsuarioLogueado.email);
@@ -17,6 +17,6 @@ angular.module('menu.controllers', [])
 	$state.go("login");
 
     });
-	}*/
+	}
 
 });
