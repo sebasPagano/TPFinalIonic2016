@@ -38,6 +38,33 @@ angular.module('credito.controllers', ['ngCordova'])
     });  
   } 
 
+  $scope.Escanear=function(){
+    try
+    {
+      document.addEventListener("deviceready", function () {
+          $cordovaBarcodeScanner.scan()
+          .then(function(barcodeData) {
+            if(barcodeData.text!=""){
+              CreditoService.BuscarPorId(barcodeData.text).then(function(respuesta){
+                $scope.credito=respuesta;
+                $scope.usuario.credito += parseInt($scope.credito.valor);
+                UsuarioService.Modificar($scope.usuario); 
+                CreditoService.Eliminar($scope.credito);
+                //$scope.showPopup('Correcto!', 'Carga de credito realizada correctamente');
+                $state.go('app.perfil');
+              }); 
+            }
+          }, function(error) {
+            console.log(error);
+          });
+      }, false);
+    }
+    catch(err)
+    {
+      console.log("Escanear solo en celulares");
+    }
+  }
+
   /*
 	$scope.AgregarCredito = function()
 	{  

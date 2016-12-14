@@ -8,5 +8,13 @@
        <button class="button button-large button-balanced" ng-click="CargarCredito()">
         Cargar
       </button>
+
+            <div ng-show="carga.id">
+              <img ng-src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl={{carga.id}}" width="150" height="150" />
+              <br><br>
+                  <button class="button button-large button-balanced" ng-click="Escanear()">Escanear
+                  </button>
+              <br><br>
+            </div>
   </ion-content>
 </ion-view>
