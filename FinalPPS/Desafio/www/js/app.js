@@ -9,6 +9,12 @@ angular.module('starter', [
    'ngCordova',
    'menu.controllers',
    'login.controllers',
+   'DesafioAceptado.controllers',
+   'MisDesafios.controllers',
+   'CrearDesafio.controllers',
+   'desafio.controllers',
+   'perfil.controllers',
+   'credito.controllers',
    'autor.controllers'
    ])
 
@@ -53,7 +59,62 @@ angular.module('starter', [
         controller:'AutorCtrl'
       }
     }
+  })
+    .state('app.desafios', {
+    url: '/desafios',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/desafios.html',
+        controller:'DesafioCtrl'
+      }
+    }
+  })
+    .state('app.CrearDesafio', {
+    url: '/CrearDesafio',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/CrearDesafio.html',
+        controller:'CrearDesafioCtrl'
+      }
+    }
+  })
+    .state('app.DesafiosAceptados', {
+    url: '/DesafiosAceptados',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/DesafioAceptado.html',
+        controller:'DesafioAceptadoCtrl'
+      }
+    }
+  })
+    .state('app.MisDesafios', {
+    url: '/MisDesafios',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/MisDesafios.html',
+        controller:'MisDesafiosCtrl'
+      }
+    }
+  })
+    .state('app.perfil', {
+    url: '/perfil',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/perfil.html',
+        controller:'PerfilCtrl'
+      }
+    }
+  })
+   .state('app.credito', {
+    url: '/CargarCredito',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/CargarCredito.html',
+        controller:'CargarCreditoCtrl'
+      }
+    }
   });
+
 
   
   // if none of the above states are matched, use this as the fallback

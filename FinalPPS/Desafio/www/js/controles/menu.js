@@ -3,9 +3,9 @@ angular.module('menu.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout,$state) {
 
-	$scope.UsuarioLogueado = {};
-  	$scope.UsuarioLogueado=firebase.auth();
-  	console.info("usuario",$scope.UsuarioLogueado);
+	
+  	$scope.UsuarioLogueado=firebase.auth().currentUser;
+  	console.log($scope.UsuarioLogueado.email);
 	//console.info($scope.UsuarioLogueado.email);
 
   $scope.LogOut = function(){

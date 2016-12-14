@@ -20,7 +20,7 @@ angular.module('login.controllers', ['ngCordova'])
      }
      
      catch(Exception){
-    console.log(Exception.Message);
+    console.log("Vibracion",Exception.Message);
      }
      $scope.Funciona = false;
     $scope.NoFunciona = false;  
@@ -28,6 +28,9 @@ angular.module('login.controllers', ['ngCordova'])
      firebase.auth().signInWithEmailAndPassword($scope.loginData.username, $scope.loginData.password)
      .then(function(Respuesta){
         $scope.Funciona = true;
+        $scope.UsuarioLogueado=firebase.auth().currentUser;
+        console.log($scope.UsuarioLogueado.uid);
+
         console.log("Respuesta: ", Respuesta);  
     $timeout(function(){
           $state.go("app.autor");
