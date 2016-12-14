@@ -6,6 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', [
   'ionic',
+  'timer',
    'ngCordova',
    'menu.controllers',
    'login.controllers',
@@ -74,7 +75,7 @@ angular.module('starter', [
     }
   })
     .state('app.aceptarDesafio', {
-    url: '/desafioAceptar',
+    url: '/desafioAceptar/:desafio',
     views: {
       'menuContent': {
         templateUrl: 'templates/AceptarDesafio.html',

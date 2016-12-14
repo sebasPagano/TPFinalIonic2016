@@ -4,7 +4,7 @@
         <div ng-repeat="desafio in datos">
             <div ng-show="!desafio.computado && desafio.disponible && desafio.creador!=userID">
               <br>
-              <ion-item ng-click="mostrarDesafio($index)">
+              <ion-item>
                   <h2><strong>{{desafio.pregunta}}</strong></h2><br>
                   <h3>{{desafio.valor | currency}}</h3><br>
                   <timer countdown="(desafio.fechaFin - DateNow) / 1000" interval="1000"><h3>{{days}} dia{{daysS}}, {{hours}} horas, {{minutes}} minutos, {{seconds}} segundos{{desafio.fechaFin}}</h3></timer>

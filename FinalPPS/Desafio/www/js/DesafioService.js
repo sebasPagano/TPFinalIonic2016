@@ -20,4 +20,17 @@ angular.module('desafios.service', ["firebase"])
                     console.log("Se agrego el id " + id);
                 });
             };
+
+            this.BuscarPorIndex = function(index){
+                return this.arrayDesafios.$loaded().then(function(datos){
+                    return datos[index];
+                })
+            };
+
+            this.Modificar = function(index){
+                this.arrayDesafios.$save(index).then(function(ref){
+                    var id = ref.key;
+                    console.log("Se modifico el item con id " + id);
+                })
+            };
  }])
