@@ -65,9 +65,13 @@ angular.module('credito.controllers', ['ngCordova'])
     }
   }
 
-  /*
+  
 	$scope.AgregarCredito = function()
 	{  
-	 CreditoService.AgregarCredito($scope.cantidad,$scope.credito);
-	}*/
+    $scope.cantidad = {};
+    $scope.creditoAgregar = {}
+  $scope.cantidad.valor = 3;
+  $scope.creditoAgregar.valor = 30;
+	 CreditoService.AgregarCredito($scope.cantidad,$scope.creditoAgregar);
+	}
 });

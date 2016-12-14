@@ -17,6 +17,7 @@ angular.module('starter', [
    'credito.controllers',
    'usuarios.service',
    'creditos.service',
+   'desafios.service',
    'autor.controllers'
    ])
 
