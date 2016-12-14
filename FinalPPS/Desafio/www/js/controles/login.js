@@ -33,7 +33,7 @@ angular.module('login.controllers', ['ngCordova'])
 
         console.log("Respuesta: ", Respuesta);  
     $timeout(function(){
-          $state.go("app.autor");
+          $state.go("app.desafios");
         }, 3000);        
       })
      .catch(function(Error){

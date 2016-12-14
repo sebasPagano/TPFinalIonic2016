@@ -53,7 +53,7 @@ angular.module('CrearDesafio.controllers', ['ngCordova'])
         }
         $scope.usuario.credito -= $scope.desafio.valor;
         UsuarioService.Modificar($scope.usuario);
-        DesafioService.add($scope.desafio);
+        DesafioService.Agregar($scope.desafio);
         console.log("Desafio agregado");
       },function(error){
         console.log(error);
@@ -61,7 +61,7 @@ angular.module('CrearDesafio.controllers', ['ngCordova'])
 
       //$scope.showPopup('El desafio se ha guardado correctamente', '', 'button-balanced');
 
-      $state.go('app.perfil');
+      $state.go('app.desafios');
     }
 
 });

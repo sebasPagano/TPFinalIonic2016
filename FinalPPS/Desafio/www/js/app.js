@@ -18,6 +18,7 @@ angular.module('starter', [
    'usuarios.service',
    'creditos.service',
    'desafios.service',
+    'aceptarDesafio.controllers',
    'autor.controllers'
    ])
 
@@ -69,6 +70,15 @@ angular.module('starter', [
       'menuContent': {
         templateUrl: 'templates/desafios.html',
         controller:'DesafioCtrl'
+      }
+    }
+  })
+    .state('app.aceptarDesafio', {
+    url: '/desafioAceptar',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/AceptarDesafio.html',
+        controller:'AceptarDesafioCtrl'
       }
     }
   })
