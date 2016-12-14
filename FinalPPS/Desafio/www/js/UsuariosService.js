@@ -29,6 +29,13 @@ angular.module('usuarios.service', ["firebase"])
                     })
                 };
 
+            this.Modificar = function(index){
+                    this.arrayUsuarios.$save(index).then(function(ref){
+                        var id = ref.key;
+                        console.log("Se modifico el usuario con id " + id);
+                   })
+             };
+
         }])
 ;
 

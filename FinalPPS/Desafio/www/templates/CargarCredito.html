@@ -1,5 +1,12 @@
 <ion-view view-title="Cargar Credito">
   <ion-content>
+        <select ng-model="carga.id">
+          <option value="">Seleccione monto..</option>
+          <option ng-repeat="credito in ListadoCreditos" value={{credito.$id}}>{{credito.valor}}</option>
+        </select>
 
+       <button class="button button-large button-balanced" ng-click="CargarCredito()">
+        Cargar
+      </button>
   </ion-content>
 </ion-view>
