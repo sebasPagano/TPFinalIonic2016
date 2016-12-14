@@ -9,7 +9,11 @@ angular.module('starter', [
    'ngCordova',
    'menu.controllers',
    'login.controllers',
+   'perfil.controllers',
+   'usuarios.controllers',
+   'batalla.controllers',
    'autor.controllers'
+
    ])
 
 .run(function($ionicPlatform) {
@@ -51,6 +55,33 @@ angular.module('starter', [
       'menuContent': {
         templateUrl: 'templates/autor.html',
         controller:'AutorCtrl'
+      }
+    }
+  })
+
+      .state('app.perfil', {
+    url: '/perfil',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/perfil.html',
+        controller:'PerfilCtrl'
+      }
+    }
+  })    .state('app.batalla', {
+    url: '/batalla',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/batalla.html',
+        controller:'BatallaCtrl'
+      }
+    }
+  })
+      .state('app.usuarios', {
+    url: '/usuarios',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/usuarios.html',
+        controller:'UsuariosCtrl'
       }
     }
   });
