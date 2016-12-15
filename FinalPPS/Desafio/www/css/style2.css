@@ -1,22 +1,4 @@
 /* Empty. Add your own CSS if you like */
-.fondoLogin
-{
-	background-image: url(../img/desafio4.jpg);
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-	text-align: center;
-}
-
-.fondoDesafios
-{
-    background-image: url(../img/desafio1.jpeg);
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    text-align: center;
-}
-
 .padding
 {
 	background-image:url(../img/homero.jpg);
@@ -25,11 +7,16 @@
     background-size: cover;
 
 }
-.custom {
-  background-color: #2E2E2E!important; /* This sets the background color*/
- }
 
+.paddingTabs
+{
+    background-image:url(../img/nubes.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    font-family: "Homer Simpson", cursive;color:#FCFF13;
 
+}
 
 .avatar {
     float: left;

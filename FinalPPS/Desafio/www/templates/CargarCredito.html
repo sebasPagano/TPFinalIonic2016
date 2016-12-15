@@ -1,21 +1,21 @@
 <ion-view view-title="Cargar Credito">
-  <ion-content>
+  <ion-content scroll="false"; style="width:100%; background: url(img/desafio5.jpg) no-repeat center;background-size:cover;">
         <select ng-model="carga.id">
-          <option value="">Seleccione monto..</option>
+          <option value="">Seleccione cantidad a cargar..</option>
           <option ng-repeat="credito in ListadoCreditos" value={{credito.$id}}>{{credito.valor}}</option>
         </select>
 
-       <button class="button button-large button-balanced" ng-click="CargarCredito()">
-        Cargar
-      </button>
+      <center> <button class="button button-large button-balanced" ng-click="AgregarCredito()">
+        Agregar Lotes
+      </button></center>
 
-            <div ng-show="carga.id">
+         </center>   <div ng-show="carga.id" align="center">
               <img ng-src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl={{carga.id}}" width="150" height="150" />
               <br><br>
-                  <button class="button button-large button-balanced" ng-click="Escanear()">Escanear
+                 <button class="button button-large button-balanced" ng-click="Escanear()">Escanear
                   </button>
               <br><br>
-            </div>
+            </div></center>
 
   </ion-content>
 </ion-view>

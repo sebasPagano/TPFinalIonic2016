@@ -1,21 +1,13 @@
 
 angular.module('credito.controllers', ['ngCordova'])
 
-.controller('CargarCreditoCtrl', function($scope, $timeout,$state,$cordovaVibration,CreditoService,UsuarioService,$cordovaBarcodeScanner) {
+.controller('CargarCreditoCtrl', function($scope, $timeout,$ionicPopup,$state,$cordovaVibration,CreditoService,UsuarioService,$cordovaBarcodeScanner) {
 
 
-	/*$scope.cantidad = {};
-	
-	$scope.cantidad.valor = 3;
-	$scope.credito.valor = 30;*/
  var f = new Date();
-  var fechaHoy =new Date(f.getFullYear(), f.getMonth(), f.getDate(),f.getHours());
-  var fechaAyer =new Date(f.getFullYear(), f.getMonth(), f.getDate()+1);
-  console.log(fechaHoy);
-  console.log(fechaAyer);  
   var hora = f.getHours();
-  var tiempo = 14;
-  console.log(f.getHours(),f.getMinutes(),f.getSeconds());
+  var tiempo = false;
+
 
 	$scope.UsuarioLogueado=firebase.auth().currentUser;
 	var id = $scope.UsuarioLogueado.uid;
@@ -35,7 +27,7 @@ angular.module('credito.controllers', ['ngCordova'])
     },function(error){
     console.log(error);
   });
-
+/*
     $scope.CargarCredito=function(){    
     CreditoService.BuscarPorId($scope.carga.id).then(function(respuesta){
       $scope.credito=respuesta;
@@ -45,7 +37,7 @@ angular.module('credito.controllers', ['ngCordova'])
       //$scope.showPopup('Correcto!', 'Carga de credito realizada correctamente');
       $state.go('app.perfil');
     });  
-  } 
+  } */
 
   $scope.Escanear=function(){
     try
@@ -59,7 +51,11 @@ angular.module('credito.controllers', ['ngCordova'])
                 $scope.usuario.credito += parseInt($scope.credito.valor);
                 UsuarioService.Modificar($scope.usuario); 
                 CreditoService.Eliminar($scope.credito);
-                //$scope.showPopup('Correcto!', 'Carga de credito realizada correctamente');
+                 $ionicPopup.alert({
+                    title: 'Se ha cargado credito!!',
+                    cssClass:'salida',
+                    okType: 'button-energized',
+                });
                 $state.go('app.perfil');
               }); 
             }
@@ -75,9 +71,15 @@ angular.module('credito.controllers', ['ngCordova'])
   }
 
   
-	if(hora==tiempo)
+	$scope.AgregarCredito = function()
 	{  
-    tiempo = 15;
+
+    $ionicPopup.alert({
+        title: 'Se han cargado nuevos lotes de credito',
+        cssClass:'salida',
+        okType: 'button-energized',
+    });
+
     $scope.cantidades = {};
     $scope.creditoAgregar = {}
   $scope.cantidades.valor = 1;

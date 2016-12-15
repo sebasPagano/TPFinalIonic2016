@@ -14,9 +14,5 @@ angular.module('perfil.controllers', ['ngCordova'])
             console.log(error);
     });
 
-  $scope.Cargar = function()
-  {
-  	$state.go('app.credito');
-  }
 
 });

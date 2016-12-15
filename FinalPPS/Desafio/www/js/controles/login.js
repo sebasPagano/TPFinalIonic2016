@@ -57,7 +57,6 @@ angular.module('login.controllers', ['ngCordova'])
           var usuario = {};
           usuario.id = respuesta.uid;
           usuario.credito = 0;
-          usuario.primerInicio = true;
           usuario.nombre = respuesta.email;
           
           UsuarioService.Agregar(usuario);

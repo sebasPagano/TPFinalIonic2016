@@ -1,7 +1,7 @@
 <ion-view view-title="Crear Desafio">
-  <ion-content>
+  <ion-content  style="width:100%; background: url(img/desafio8.jpg) no-repeat center;background-size:cover;">
 
-  		      <div class="card">
+  		     <!-- <div class="card">
         <div class="item item-text-wrap">
           <label><strong>Ingrese desafio:</strong></label><br>
           <textarea ng-model="desafio.pregunta" style="width: 100%; text-align: center">
@@ -25,6 +25,7 @@
             <div >
              <p><strong>Dias </strong></p>
               <input type="number" min="0" max="6" value="0" ng-model="tiempo.dias">
+
               <p>
             </div>
           <br/>
@@ -61,7 +62,22 @@
 
              <button class="button button-large button-balanced" ng-click="Aceptar()">
         Crear
-      </button>
+      </button>-->
+      <form name="formAlta" id="formAlta" align='center' enctype="multipart/form-data" >
+       
+         <textarea placeholder="Ingrese Pregunta" ng-model="desafio.pregunta" style="width: 100%; text-align: center">
+          </textarea>
+           <center><font>Valor:<input type="number" min="10" max="100" value="50" ng-model="desafio.valor" name="valor"></font></center>
+            <center><font>Dias:<input type="number" min="0" max="6" value="0" ng-model="tiempo.dias"></font></center>
+            <center><font>Horas:<input type="number" min="0" max="23" value="0" ng-model="tiempo.horas"></font></center>
+            <center></font>Minutos:<input type="number" min="0" max="59" value="0" ng-model="tiempo.minutos"></font></center>
+            <center></font>Segundos:<input type="number" min="0" max="59" value="0" ng-model="tiempo.segundos"></font></center>
+            <button class="button button-large button-balanced" ng-click="Aceptar()">Crear</button>
+       <!-- <a class="btn btn-warning" name="guardar" ng-disabled="formAlta.$invalid" ng-if="!formAlta.$invalid" ng-click="guardar()" ><span class="glyphicon glyphicon-save">&nbsp;</span>Agregar Usuario!</a>-->
+          
+        
+
+      </form>
       
   </ion-content>
 </ion-view>

@@ -15,7 +15,7 @@ angular.module('usuarios.service', ["firebase"])
                 };
             this.Agregar = function(usuario){
                     var refUsuarios = firebase.database().ref().child('Usuarios/' + usuario.id);
-                    refUsuarios.set( { credito: usuario.credito, primerInicio: usuario.primerInicio, nombre: usuario.nombre }, function(error){
+                    refUsuarios.set( { credito: usuario.credito, nombre: usuario.nombre }, function(error){
                         if (error)
                             console.log("Error al guardar: " + error)
                         else

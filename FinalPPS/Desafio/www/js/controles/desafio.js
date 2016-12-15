@@ -45,7 +45,7 @@ angular.module('desafio.controllers', ['ngCordova'])
     if(!desafio.computado && ((desafio.fechaFin - $scope.DateNow) / 1000)<=0){
         // NO FUE ACEPTADO
         if(desafio.jugador == '') {
-          //NotificationService.sendNotification(desafio.creador,"DesafíaMente","Un desafío terminó sin resultados");
+        
           UsuarioService.BuscarPorId(desafio.creador).then(function(respuesta){
             var usuario=respuesta;
             usuario.credito += parseInt(desafio.valor);
@@ -58,8 +58,6 @@ angular.module('desafio.controllers', ['ngCordova'])
                         computado: true,
                         jugador: desafio.jugador,
                         valor: desafio.valor,
-                        //quienGano: desafio.quienGano,
-                        //quienPerdio: desafio.quienPerdio,
                         ganador: desafio.creador,
                         fechaInicio: desafio.fechaInicio,
                         fechaFin: desafio.fechaFin,
@@ -149,7 +147,7 @@ angular.module('desafio.controllers', ['ngCordova'])
     }
   }
 
-    $scope.mostrarDesafio = function(index){
+    $scope.verDesafio = function(index){
     $state.go('app.aceptarDesafio', {desafio:index} );
   }
 

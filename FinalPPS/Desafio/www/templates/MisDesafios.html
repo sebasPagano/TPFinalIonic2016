@@ -1,16 +1,20 @@
 <ion-view view-title="Mis Desafios">
-  <ion-content>
+  <ion-content  style="width:100%; background: url(img/desafio2.jpg) no-repeat center;background-size:cover;">
   <ion-list ng-show="mostrar">
         <div ng-repeat="desafio in datos">
             <div ng-if="desafio.creador == userID">
               <br>
               <ion-item>
-                  <h2><strong>{{desafio.pregunta}}</strong></h2><br>
-                  <h3>{{desafio.valor | currency}}</h3>
- 
-                <timer ng-show="desafio.disponible" countdown="(desafio.fechaFin - DateNow) / 1000" interval="1000"><h3>{{days}} dia{{daysS}}, {{hours}} horas, {{minutes}} minutos, {{seconds}} segundos</h3></timer>
+                    <center><h2><strong>{{desafio.pregunta}}</strong></h2><br>
+                  <h3>{{desafio.valor}}$</h3><br> 
+                  
+                  <timer ng-show="desafio.disponible" countdown="(desafio.fechaFin - DateNow) / 1000" interval="1000">
+
+                   <font color="red">{{days}} dias</br> {{hours}} hrs {{minutes}} min {{seconds}}sec</h3></font></timer>
+                  </center>
                 
               </ion-item>
+                  </center>
               <br>
             </div>
         </div>
