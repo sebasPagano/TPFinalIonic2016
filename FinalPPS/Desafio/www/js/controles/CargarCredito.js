@@ -27,17 +27,17 @@ angular.module('credito.controllers', ['ngCordova'])
     },function(error){
     console.log(error);
   });
-/*
+
     $scope.CargarCredito=function(){    
     CreditoService.BuscarPorId($scope.carga.id).then(function(respuesta){
       $scope.credito=respuesta;
       $scope.usuario.credito += parseInt($scope.credito.valor);
       UsuarioService.Modificar($scope.usuario); 
-      CreditoService.Eliminar($scope.credito);
+
       //$scope.showPopup('Correcto!', 'Carga de credito realizada correctamente');
       $state.go('app.perfil');
     });  
-  } */
+  } 
 
   $scope.Escanear=function(){
     try
@@ -50,7 +50,7 @@ angular.module('credito.controllers', ['ngCordova'])
                 $scope.credito=respuesta;
                 $scope.usuario.credito += parseInt($scope.credito.valor);
                 UsuarioService.Modificar($scope.usuario); 
-                CreditoService.Eliminar($scope.credito);
+  
                  $ionicPopup.alert({
                     title: 'Se ha cargado credito!!',
                     cssClass:'salida',
@@ -70,27 +70,4 @@ angular.module('credito.controllers', ['ngCordova'])
     }
   }
 
-  
-	$scope.AgregarCredito = function()
-	{  
-
-    $ionicPopup.alert({
-        title: 'Se han cargado nuevos lotes de credito',
-        cssClass:'salida',
-        okType: 'button-energized',
-    });
-
-    $scope.cantidades = {};
-    $scope.creditoAgregar = {}
-  $scope.cantidades.valor = 1;
-  $scope.creditoAgregar.valor = 30;
-	 CreditoService.AgregarCredito($scope.cantidades,$scope.creditoAgregar);
-     $scope.cantidades.valor = 1;
-  $scope.creditoAgregar.valor = 50;
-   CreditoService.AgregarCredito($scope.cantidades,$scope.creditoAgregar);
-     $scope.cantidades.valor = 1;
-  $scope.creditoAgregar.valor = 100;
-   CreditoService.AgregarCredito($scope.cantidades,$scope.creditoAgregar);
-   return;
-	}
 });

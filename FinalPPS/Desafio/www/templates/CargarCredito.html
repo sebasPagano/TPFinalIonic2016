@@ -5,8 +5,8 @@
           <option ng-repeat="credito in ListadoCreditos" value={{credito.$id}}>{{credito.valor}}</option>
         </select>
 
-      <center> <button class="button button-large button-balanced" ng-click="AgregarCredito()">
-        Agregar Lotes
+            <center> <button class="button button-large button-balanced" ng-click="CargarCredito()">
+        Cargar
       </button></center>
 
          </center>   <div ng-show="carga.id" align="center">

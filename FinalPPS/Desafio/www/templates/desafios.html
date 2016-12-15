@@ -8,11 +8,13 @@
               <br>
               <ion-item>
                   <center><h2><strong>{{desafio.pregunta}}</strong></h2><br>
-                  <h3>{{desafio.valor}}$</h3><br> 
-                    <button style="position:absolute;left:90%;width:7%;height:2%" class="button button-positive" ng-click="verDesafio($index)">Aceptar</button>
+                  <h3>{{desafio.valor}}$</h3></br> 
+               
                   <timer countdown="(desafio.fechaFin - DateNow) / 1000" interval="1000">
 
-                   <font color="red">{{days}} dias</br> {{hours}} hrs {{minutes}} min {{seconds}}sec</h3></font></timer>
+                   <font color="red">{{days}} dias</br> {{hours}} hrs {{minutes}} min {{seconds}}sec</h3></font></timer> </br>  
+                   </br>  
+                     <button class="button button-positive" ng-click="verDesafio($index)">Aceptar</button>
                   </center>
               </ion-item>
               <br>

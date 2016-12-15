@@ -23,11 +23,7 @@ angular.module('creditos.service', ["firebase"])
                         return datos;
                     })
                 };
-            this.Eliminar = function(index){
-                    this.arrayCreditos.$remove(index).then(function(ref){
-                        console.log("Se elimino credito");
-                    })
-                };
+
             this.BuscarPorId = function(id){
                     return this.arrayCreditos.$loaded().then(function(datos){
                         return datos.$getRecord(id);
