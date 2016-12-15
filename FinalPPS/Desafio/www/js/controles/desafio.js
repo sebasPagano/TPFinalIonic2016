@@ -11,18 +11,14 @@ angular.module('desafio.controllers', ['ngCordova'])
   $scope.DateNow = new Date().getTime();
   $scope.userID = firebase.auth().currentUser.uid;
 
-      $ionicPopup.alert({
-              title: 'Hola.',
-              cssClass:'salida',
-              okType: 'button-energized',
-          });
   try{
    var refDesafio = firebase.database().ref('Desafios/');
     refDesafio.on('child_added', function(snapshot){
         $timeout(function(){
           var desafio = snapshot.val();
-          console.log(snapshot);
+          console.log(snapshot.val());
           var id=snapshot.key;
+          console.log(id)
           if(!desafio.computado && ((desafio.fechaFin - $scope.DateNow) / 1000)<=0)
           {
 
@@ -62,8 +58,9 @@ angular.module('desafio.controllers', ['ngCordova'])
                         computado: true,
                         jugador: desafio.jugador,
                         valor: desafio.valor,
-                        quienGano: desafio.quienGano,
-                        quienPerdio: desafio.quienPerdio,
+                        //quienGano: desafio.quienGano,
+                        //quienPerdio: desafio.quienPerdio,
+                        ganador: desafio.creador,
                         fechaInicio: desafio.fechaInicio,
                         fechaFin: desafio.fechaFin,
                         pregunta: desafio.pregunta 
@@ -77,8 +74,8 @@ angular.module('desafio.controllers', ['ngCordova'])
           {
             //ReproducirPositivo();
               $ionicPopup.alert({
-                title: 'NADA!!',
-                template: 'No hubo jugadores para el desafio',
+                title: 'Nadie acepto el desafio!!',
+                template: 'No hubo jugadores por lo tanto no ha ganado dinero, se le devuelve el monto apostado',
                 cssClass:'salida',
                 okType: 'button-balanced'
               });
@@ -93,18 +90,17 @@ angular.module('desafio.controllers', ['ngCordova'])
             if(firebase.auth().currentUser.uid == desafio.creador)
             {
                var confirmPopup = $ionicPopup.confirm({
-                 title: 'Tiempo de desafio agotado',
-                 template: 'El otro jugador gana?',
+                 title: 'Desafio Terminado: ',
+                 template: '¿Gana el otro jugador?',
                  cssClass:'salida'
                });
 
                confirmPopup.then(function(res) {
                  if(res) {
                   UsuarioService.BuscarPorId(desafio.jugador).then(function(respuesta){
-                    //console.info(respuesta);
+          
                     var usuario=respuesta;
-                    //NotificationService.sendNotification(desafio.creador,"DesafíaMente",usuario.nombre+" ganó el desafío");
-                   // NotificationService.sendNotification(desafio.jugador,"DesafíaMente",usuario.nombre+" ganó el desafío");
+            
                     usuario.credito += (parseInt(desafio.valor) * 2);
                     UsuarioService.Modificar(usuario);
                     var desf = firebase.database().ref().child('Desafios/' + id);
@@ -113,11 +109,12 @@ angular.module('desafio.controllers', ['ngCordova'])
                                 computado: true,
                                 jugador: desafio.jugador,
                                 valor: desafio.valor,
-                                quienGano: desafio.jugador,
-                                quienPerdio: desafio.creador,
+                                //quienGano: desafio.jugador,
+                                //quienPerdio: desafio.creador,
+                                ganador : desafio.jugador,
                                 fechaInicio: desafio.fechaInicio,
                                 fechaFin: desafio.fechaFin,
-                                pregunta: desafio.pregunta 
+                                 pregunta: desafio.pregunta 
                               }, function(error){
                                 console.log(error); 
                             });           
@@ -126,9 +123,7 @@ angular.module('desafio.controllers', ['ngCordova'])
                   UsuarioService.BuscarPorId(desafio.creador).then(function(respuesta){
                     //console.info(respuesta);
                     var usuario=respuesta;
-                  //  NotificationService.sendNotification(desafio.creador,"DesafíaMente",usuario.nombre+" perdió el desafío");
-                   // NotificationService.sendNotification(desafio.jugador,"DesafíaMente",usuario.nombre+" perdió el desafío");
-                    $scope.usuario.credito += (parseInt(desafio.valor)*2);
+                    usuario.credito += (parseInt(desafio.valor)*2);
                     UsuarioService.Modificar(usuario);
                     var desf = firebase.database().ref().child('Desafios/' + id);
                     desf.set( { creador: desafio.creador, 
@@ -136,8 +131,9 @@ angular.module('desafio.controllers', ['ngCordova'])
                                 computado: true,
                                 jugador: desafio.jugador,
                                 valor: desafio.valor,
-                                quienGano: desafio.creador,
-                                quienPerdio: desafio.jugador,
+                                //quienGano: desafio.creador,
+                               // quienPerdio: desafio.jugador,
+                                ganador: desafio.creador,
                                 fechaInicio: desafio.fechaInicio,
                                 fechaFin: desafio.fechaFin,
                                 pregunta: desafio.pregunta 

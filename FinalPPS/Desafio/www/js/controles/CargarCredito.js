@@ -8,6 +8,15 @@ angular.module('credito.controllers', ['ngCordova'])
 	
 	$scope.cantidad.valor = 3;
 	$scope.credito.valor = 30;*/
+ var f = new Date();
+  var fechaHoy =new Date(f.getFullYear(), f.getMonth(), f.getDate(),f.getHours());
+  var fechaAyer =new Date(f.getFullYear(), f.getMonth(), f.getDate()+1);
+  console.log(fechaHoy);
+  console.log(fechaAyer);  
+  var hora = f.getHours();
+  var tiempo = 14;
+  console.log(f.getHours(),f.getMinutes(),f.getSeconds());
+
 	$scope.UsuarioLogueado=firebase.auth().currentUser;
 	var id = $scope.UsuarioLogueado.uid;
 	$scope.ListadoCreditos={};
@@ -66,12 +75,20 @@ angular.module('credito.controllers', ['ngCordova'])
   }
 
   
-	$scope.AgregarCredito = function()
+	if(hora==tiempo)
 	{  
-    $scope.cantidad = {};
+    tiempo = 15;
+    $scope.cantidades = {};
     $scope.creditoAgregar = {}
-  $scope.cantidad.valor = 3;
+  $scope.cantidades.valor = 1;
   $scope.creditoAgregar.valor = 30;
-	 CreditoService.AgregarCredito($scope.cantidad,$scope.creditoAgregar);
+	 CreditoService.AgregarCredito($scope.cantidades,$scope.creditoAgregar);
+     $scope.cantidades.valor = 1;
+  $scope.creditoAgregar.valor = 50;
+   CreditoService.AgregarCredito($scope.cantidades,$scope.creditoAgregar);
+     $scope.cantidades.valor = 1;
+  $scope.creditoAgregar.valor = 100;
+   CreditoService.AgregarCredito($scope.cantidades,$scope.creditoAgregar);
+   return;
 	}
 });

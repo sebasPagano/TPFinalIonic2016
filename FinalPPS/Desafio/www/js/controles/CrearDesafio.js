@@ -10,8 +10,10 @@ angular.module('CrearDesafio.controllers', ['ngCordova'])
   $scope.desafio.computado=false;
   $scope.desafio.jugador="";
   $scope.desafio.valor=50;
-  $scope.desafio.quienGano="";
-  $scope.desafio.quienPerdio="";
+  $scope.desafio.pregunta = "Aqui ponga su desafio";
+  //$scope.desafio.quienGano="";
+ // $scope.desafio.quienPerdio="";
+ $scope.desafio.ganador = "";
 
     $scope.arrayDias = Array.from(Array(6).keys()); 
   $scope.arrayHoras = Array.from(Array(24).keys()); 
@@ -39,16 +41,20 @@ angular.module('CrearDesafio.controllers', ['ngCordova'])
           fechaFin.setSeconds(fechaFin.getSeconds() + parseInt($scope.tiempo.segundos));
       }
 
-      $scope.desafio.fechaInicio = new Date().getTime(); //firebase.database.ServerValue.TIMESTAMP;
+      $scope.desafio.fechaInicio = new Date().getTime(); 
       $scope.desafio.fechaFin = fechaFin.getTime();
 
       var id = firebase.auth().currentUser.uid;
       UsuarioService.BuscarPorId(id).then(function(respuesta){
-        //console.info(respuesta);
+       
         $scope.usuario=respuesta;
         if($scope.usuario.credito < $scope.desafio.valor)
         {
-         // $scope.showPopup('Saldo Insuficiente', 'No posee el crédito suficiente para crear un desafío por el valor ingresado.');
+          $ionicPopup.alert({
+              title: 'Saldo Insuficiente.',
+              cssClass:'salida',
+              okType: 'button-energized',
+          });
           return;
         }
         $scope.usuario.credito -= $scope.desafio.valor;

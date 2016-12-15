@@ -12,7 +12,11 @@ var index = $stateParams.desafio;
     console.log("Desafio",$scope.desafio);
       // Esta validacion no va a estar cuando se permita que un desafio sea aceptado por mas de 1 usuario
     if ($scope.desafio.jugador != "" && $scope.desafio.jugador != $scope.usuario.$id){
-    //  $scope.showPopup('Desafio no disponible', 'El desafío ya ha sido aceptado por otro usuario.');
+         $ionicPopup.alert({
+              title: 'Desafio Aceptado por otro usuario',
+              cssClass:'salida',
+              okType: 'button-energized',
+          });
       $state.go('app.desafios');
     }
   },function(error){
@@ -31,16 +35,27 @@ var id = firebase.auth().currentUser.uid;
   $scope.AceptarDesafio=function(){
       $scope.desafio.jugador = $scope.usuario.$id;
       if($scope.usuario.credito < $scope.desafio.valor){
-        //$scope.showPopup('Saldo Insuficiente', 'No posee el crédito suficiente para aceptar este desafío.');
-        //$scope.desafio.respuestaElegida = "";
+        
+          $ionicPopup.alert({
+              title: 'Saldo Insuficiente.',
+              cssClass:'salida',
+              okType: 'button-energized',
+          });
         return;
-      }
+      }else
+      {
       $scope.usuario.credito -= $scope.desafio.valor;
       UsuarioService.Modificar($scope.usuario);
       DesafioService.Modificar($scope.desafio);
       console.log("Desafio modificado");
-      //$scope.showPopup('El desafio ha sido aceptado. El jugador que creó el desafío decidirá quién es el ganador.', '', 'button-balanced');
+      $ionicPopup.alert({
+              title: 'Desafio Aceptado.',
+              cssClass:'salida',
+              okType: 'button-energized',
+          });
+     
       $state.go('app.desafios');
+    }
   }
 
 });

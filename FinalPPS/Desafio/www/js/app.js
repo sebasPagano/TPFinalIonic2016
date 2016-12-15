@@ -10,7 +10,6 @@ angular.module('starter', [
    'ngCordova',
    'menu.controllers',
    'login.controllers',
-   'DesafioAceptado.controllers',
    'MisDesafios.controllers',
    'CrearDesafio.controllers',
    'desafio.controllers',
@@ -89,15 +88,6 @@ angular.module('starter', [
       'menuContent': {
         templateUrl: 'templates/CrearDesafio.html',
         controller:'CrearDesafioCtrl'
-      }
-    }
-  })
-    .state('app.DesafiosAceptados', {
-    url: '/DesafiosAceptados',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/DesafioAceptado.html',
-        controller:'DesafioAceptadoCtrl'
       }
     }
   })

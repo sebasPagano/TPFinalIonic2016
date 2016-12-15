@@ -29,11 +29,7 @@ $scope.userID = firebase.auth().currentUser.uid;
           });
   }
 
-  $scope.Borrar=function(index){
-    DesafioService.BuscarPorIndex(index).then(function(respuesta){
-      DesafioService.Eliminar(respuesta);
-    });
-  }
+
   
 
 });

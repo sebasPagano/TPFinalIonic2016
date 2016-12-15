@@ -14,38 +14,6 @@
             </div>
         </div>
        </ion-list>
-     <!--  <ion-list ng-show="mostrar">
-        <div ng-repeat="desafio in datos">
-            <div ng-if="desafio.creador == userID">
-              <br>
-              <ion-item ng-click="mostrarDesafio($index)">
-                  <h2><strong>{{desafio.pregunta}}</strong></h2><br>
-                  <h3>{{desafio.valor | currency}}</h3>
-                  <button class="button button-small button-positive" ng-show="desafio.computado" style="float:right;" ng-click="Borrar($index)">Borrar</button>
-                  <br>
-                <timer ng-show="desafio.disponible" countdown="(desafio.fechaFin - DateNow) / 1000" interval="1000"><h3>{{days}} dia{{daysS}}, {{hours}} horas, {{minutes}} minutos, {{seconds}} segundos</h3></timer>
-                
-              </ion-item>
-              <br>
-            </div>
-        </div>
-       </ion-list>
-
-       <ion-list ng-show="aceptados">
-        <div ng-repeat="desafio in datos">
-            <div ng-if="desafio.jugador == userID">
-              <br>
-              <ion-item ng-click="mostrarDesafio($index)">
-                  <h2><strong>{{desafio.pregunta}}</strong></h2><br>
-                  <h3>{{desafio.valor | currency}}</h3>
-                  <button class="button button-small button-positive" ng-show="desafio.computado" style="float:right;" ng-click="Borrar($index)">Borrar</button>
-                  <br>
-                <timer ng-show="desafio.disponible" countdown="(desafio.fechaFin - DateNow) / 1000" interval="1000"><h3>{{days}} dia{{daysS}}, {{hours}} horas, {{minutes}} minutos, {{seconds}} segundos</h3></timer>
-              </ion-item>
-              <br>
-            </div>
-        </div>
-       </ion-list>-->
 
   </ion-content>
 </ion-view>

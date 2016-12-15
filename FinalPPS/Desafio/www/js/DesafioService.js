@@ -33,9 +33,5 @@ angular.module('desafios.service', ["firebase"])
                     console.log("Se modifico el item con id " + id);
                 })
             };
-            this.Eliminar = function(index){
-                    this.arrayDesafios.$remove(index).then(function(ref){
-                        console.log("Se elimino desafio");
-                    })
-            };
+
  }])
