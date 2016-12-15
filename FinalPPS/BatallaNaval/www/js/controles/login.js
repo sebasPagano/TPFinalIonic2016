@@ -1,7 +1,7 @@
 
 angular.module('login.controllers', ['ngCordova'])
 
-.controller('LoginCtrl', function($scope, $ionicModal, $timeout,$state,$cordovaVibration) {
+.controller('LoginCtrl', function($scope, $ionicModal, $timeout,$state,$cordovaVibration,UsuarioBatallaService) {
 
   $scope.unabandera = true;
   
@@ -10,7 +10,7 @@ angular.module('login.controllers', ['ngCordova'])
         }, 3000);     
   
   $scope.loginData = {};
-  $scope.loginData.username = "jugador1@hotmail.com";
+  $scope.loginData.username = "jugadorBatalla1@hotmail.com";
   $scope.loginData.password = "123456";
 
   $scope.Login = function()
@@ -40,9 +40,26 @@ angular.module('login.controllers', ['ngCordova'])
   }
         $scope.Registro = function()
   {
-  var user = firebase.auth().createUserWithEmailAndPassword($scope.loginData.username,$scope.loginData.password);
- // alert("Registrado Exitosamente");
-  $state.go('app.autor');
+          var user = firebase.auth().createUserWithEmailAndPassword($scope.loginData.username,$scope.loginData.password).then(function(respuesta){
+          console.info("Respuesta: ",respuesta);
+          $scope.loginData.username="";
+          $scope.loginData.password="";
+          
+          var usuario = {};
+          usuario.id = respuesta.uid;
+          usuario.credito = 0;
+          usuario.nombre = respuesta.email;
+          usuario.email = respuesta.email;
+          
+          UsuarioBatallaService.Agregar(usuario);
+          console.log("usuario agregado");
+          // $state.go('app.autor');
+    
+        })
+        .catch(function(error){
+          console.info("Error: ",error);
+
+        });
   }
 
    $scope.Acceso = function(correo, clave){

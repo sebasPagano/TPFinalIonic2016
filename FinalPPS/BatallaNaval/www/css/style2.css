@@ -1,0 +1,41 @@
+/* Empty. Add your own CSS if you like */
+.padding
+{
+	background-image:url(../img/homero.jpg);
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+
+}
+
+.paddingTabs
+{
+    background-image:url(../img/nubes.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    font-family: "Homer Simpson", cursive;color:#FCFF13;
+
+}
+
+.avatar {
+    float: left;
+    margin-top: 1em;
+    margin-right: 1em;
+    position: relative;
+
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+
+    -webkit-box-shadow: 0 0 0 3px #fff, 0 0 0 4px #999, 0 2px 5px 4px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 0 0 3px #fff, 0 0 0 4px #999, 0 2px 5px 4px rgba(0,0,0,.2);
+    box-shadow: 0 0 0 3px #fff, 0 0 0 4px #999, 0 2px 5px 4px rgba(0,0,0,.2);
+}
+.Letra1{
+  font: oblique bold 120% cursive;
+
+}
+.Letra2 {
+  font-family: "Homer Simpson", cursive;
+}

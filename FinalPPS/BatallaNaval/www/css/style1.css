@@ -1,0 +1,62 @@
+/* Empty. Add your own CSS if you like */
+
+.imagenFondo
+{
+    background-image:url(../img/FondoInicio.jpeg);
+    background-repeat: no-repeat;
+    background-position: static;
+    background-size: cover;
+
+
+
+}
+
+
+.avatar {
+    float: left;
+    margin-top: 1em;
+    margin-right: 1em;
+    position: relative;
+
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+
+    -webkit-box-shadow: 0 0 0 3px #fff, 0 0 0 4px #999, 0 2px 5px 4px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 0 0 3px #fff, 0 0 0 4px #999, 0 2px 5px 4px rgba(0,0,0,.2);
+    box-shadow: 0 0 0 3px #fff, 0 0 0 4px #999, 0 2px 5px 4px rgba(0,0,0,.2);
+}
+
+
+.p {
+  font: oblique bold 200% cursive;
+
+
+}
+.cursiva {
+  font: oblique bold 100% cursive;
+
+
+}
+.imagenPosicionada{
+  position: absolute;
+  top:  200px; 
+  left: 120px;
+
+ 
+}
+.imagenPosicionada1{
+  position: absolute;
+  left: -110px;
+
+ 
+}
+.imagenPosicionada2{
+  position: absolute;
+  left: 120px;
+
+ 
+}
+.Letra2 {
+  font-family: "Homer Simpson", cursive;
+}

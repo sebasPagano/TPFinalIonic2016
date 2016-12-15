@@ -12,7 +12,10 @@ angular.module('starter', [
    'perfil.controllers',
    'usuarios.controllers',
    'batalla.controllers',
-   'autor.controllers'
+   'autor.controllers',
+   'usuariosBatalla.service',
+   'creditos.service'
+   //'credito.controllers'
 
    ])
 
@@ -59,6 +62,16 @@ angular.module('starter', [
     }
   })
 
+   /* .state('app.credito', {
+    url: '/CargarCredito',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/CargarCredito.html',
+        controller:'CargarCreditoCtrl'
+      }
+    }
+  })*/
+
       .state('app.perfil', {
     url: '/perfil',
     views: {
@@ -67,7 +80,8 @@ angular.module('starter', [
         controller:'PerfilCtrl'
       }
     }
-  })    .state('app.batalla', {
+  })    
+    .state('app.batalla', {
     url: '/batalla',
     views: {
       'menuContent': {
