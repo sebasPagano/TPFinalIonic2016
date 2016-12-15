@@ -14,8 +14,8 @@ angular.module('starter', [
    'batalla.controllers',
    'autor.controllers',
    'usuariosBatalla.service',
-   'creditos.service'
-   //'credito.controllers'
+   'creditos.service',
+   'credito.controllers'
 
    ])
 
@@ -62,7 +62,7 @@ angular.module('starter', [
     }
   })
 
-   /* .state('app.credito', {
+    .state('app.credito', {
     url: '/CargarCredito',
     views: {
       'menuContent': {
@@ -70,7 +70,7 @@ angular.module('starter', [
         controller:'CargarCreditoCtrl'
       }
     }
-  })*/
+  })
 
       .state('app.perfil', {
     url: '/perfil',
