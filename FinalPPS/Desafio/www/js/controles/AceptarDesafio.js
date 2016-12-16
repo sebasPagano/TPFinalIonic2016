@@ -10,7 +10,7 @@ var index = $stateParams.desafio;
   DesafioService.BuscarPorIndex(index).then(function(respuesta){
     $scope.desafio=respuesta;
     console.log("Desafio",$scope.desafio);
-      // Esta validacion no va a estar cuando se permita que un desafio sea aceptado por mas de 1 usuario
+
     if ($scope.desafio.jugador != "" && $scope.desafio.jugador != $scope.usuario.$id){
          $ionicPopup.alert({
               title: 'Este desafio ya fue aceptado',

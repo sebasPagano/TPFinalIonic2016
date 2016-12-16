@@ -16,9 +16,9 @@ angular.module('desafio.controllers', ['ngCordova'])
     refDesafio.on('child_added', function(snapshot){
         $timeout(function(){
           var desafio = snapshot.val();
-          console.log(snapshot.val());
+    
           var id=snapshot.key;
-          console.log(id)
+        
           if(!desafio.computado && ((desafio.fechaFin - $scope.DateNow) / 1000)<=0)
           {
 

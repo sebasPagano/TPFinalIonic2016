@@ -1,7 +1,7 @@
 
 angular.module('CrearDesafio.controllers', ['ngCordova'])
 
-.controller('CrearDesafioCtrl', function($scope, UsuarioService, $timeout,$state,$cordovaVibration,$cordovaNativeAudio,DesafioService) {
+.controller('CrearDesafioCtrl', function($scope, $ionicPopup,UsuarioService, $timeout,$state,$cordovaVibration,$cordovaNativeAudio,DesafioService) {
 
   $scope.usuario = {};
   $scope.desafio = {};
@@ -24,7 +24,11 @@ angular.module('CrearDesafio.controllers', ['ngCordova'])
   $scope.Aceptar=function(){
       var fechaFin;
       if ($scope.tiempo.dias == 0 && $scope.tiempo.horas == 0 && $scope.tiempo.minutos == 0 && $scope.tiempo.segundos == 0){
-        alert("Debe seleccionar alguno");
+          $ionicPopup.alert({
+              title: 'Debe elegir el tiempo.',
+              cssClass:'salida',
+              okType: 'button-energized',
+          });
         return false;
       }
       else{
@@ -71,7 +75,6 @@ angular.module('CrearDesafio.controllers', ['ngCordova'])
         console.log(error);
       });
 
-      //$scope.showPopup('El desafio se ha guardado correctamente', '', 'button-balanced');
 
       $state.go('app.desafios');
     }

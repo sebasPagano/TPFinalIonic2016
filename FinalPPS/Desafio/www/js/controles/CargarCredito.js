@@ -28,16 +28,6 @@ angular.module('credito.controllers', ['ngCordova'])
     console.log(error);
   });
 
-    $scope.CargarCredito=function(){    
-    CreditoService.BuscarPorId($scope.carga.id).then(function(respuesta){
-      $scope.credito=respuesta;
-      $scope.usuario.credito += parseInt($scope.credito.valor);
-      UsuarioService.Modificar($scope.usuario); 
-
-
-      $state.go('app.perfil');
-    });  
-  } 
 
   $scope.Escanear=function(){
     try
@@ -60,7 +50,7 @@ angular.module('credito.controllers', ['ngCordova'])
                     console.log("Plugins solo en celulares POR FAVOR!! :)");
                  }
                  $ionicPopup.alert({
-                    title: 'Se ha cargado credito!!',
+                    title: 'Se ha cargado credito satisfactoriamente!!',
                     cssClass:'salida',
                     okType: 'button-energized',
                 });
