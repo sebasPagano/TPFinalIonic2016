@@ -5,10 +5,6 @@
           <option ng-repeat="credito in ListadoCreditos" value={{credito.$id}}>{{credito.valor}}</option>
         </select>
 
-            <center> <button class="button button-large button-balanced" ng-click="CargarCredito()">
-        Cargar
-      </button></center>
-
          </center>   <div ng-show="carga.id" align="center">
               <img ng-src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl={{carga.id}}" width="150" height="150" />
               <br><br>

@@ -11,7 +11,6 @@ angular.module('starter', [
    'login.controllers',
    'perfil.controllers',
    'usuarios.controllers',
-   'batalla.controllers',
    'autor.controllers',
    'usuariosBatalla.service',
    'creditos.service',
@@ -19,7 +18,7 @@ angular.module('starter', [
 
    ])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $cordovaNativeAudio) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -32,6 +31,15 @@ angular.module('starter', [
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+    if(window.plugins && window.plugins.NativeAudio)
+    { 
+
+      $cordovaNativeAudio.preloadComplex('correcto', 'sonidos/correcto.mp3', 1, 1);
+       $cordovaNativeAudio.preloadComplex('incorrecto', 'sonidos/incorrecto.mp3', 1, 1);
+      $cordovaNativeAudio.preloadComplex('moneda', 'sonidos/moneda.mp3', 1, 1);
+ 
+    }
+
   });
 })
 
@@ -81,15 +89,7 @@ angular.module('starter', [
       }
     }
   })    
-    .state('app.batalla', {
-    url: '/batalla',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/batalla.html',
-        controller:'BatallaCtrl'
-      }
-    }
-  })
+
       .state('app.usuarios', {
     url: '/usuarios',
     views: {
