@@ -5,8 +5,6 @@ angular.module('menu.controllers', [])
 
 	
   	$scope.UsuarioLogueado=firebase.auth().currentUser;
-  	//console.log($scope.UsuarioLogueado.email);
-	//console.info($scope.UsuarioLogueado.email);
 
   $scope.LogOut = function(){
 

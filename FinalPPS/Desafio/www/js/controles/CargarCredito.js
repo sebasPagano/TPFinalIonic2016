@@ -1,7 +1,7 @@
 
 angular.module('credito.controllers', ['ngCordova'])
 
-.controller('CargarCreditoCtrl', function($scope, $timeout,$ionicPopup,$state,$cordovaVibration,CreditoService,UsuarioService,$cordovaBarcodeScanner) {
+.controller('CargarCreditoCtrl', function($scope, $timeout,$ionicPopup,$state,$cordovaVibration,$cordovaNativeAudio,CreditoService,UsuarioService,$cordovaBarcodeScanner) {
 
 
  var f = new Date();
@@ -34,7 +34,7 @@ angular.module('credito.controllers', ['ngCordova'])
       $scope.usuario.credito += parseInt($scope.credito.valor);
       UsuarioService.Modificar($scope.usuario); 
 
-      //$scope.showPopup('Correcto!', 'Carga de credito realizada correctamente');
+
       $state.go('app.perfil');
     });  
   } 
@@ -50,7 +50,15 @@ angular.module('credito.controllers', ['ngCordova'])
                 $scope.credito=respuesta;
                 $scope.usuario.credito += parseInt($scope.credito.valor);
                 UsuarioService.Modificar($scope.usuario); 
-  
+                  
+                try{
+                   $cordovaNativeAudio.play('moneda');
+                   $cordovaVibration.vibrate(300);
+                 }
+                 catch(e)
+                 {
+                    console.log("Plugins solo en celulares POR FAVOR!! :)");
+                 }
                  $ionicPopup.alert({
                     title: 'Se ha cargado credito!!',
                     cssClass:'salida',

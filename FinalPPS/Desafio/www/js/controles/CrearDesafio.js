@@ -1,7 +1,7 @@
 
 angular.module('CrearDesafio.controllers', ['ngCordova'])
 
-.controller('CrearDesafioCtrl', function($scope, UsuarioService, $timeout,$state,$cordovaVibration,DesafioService) {
+.controller('CrearDesafioCtrl', function($scope, UsuarioService, $timeout,$state,$cordovaVibration,$cordovaNativeAudio,DesafioService) {
 
   $scope.usuario = {};
   $scope.desafio = {};
@@ -11,8 +11,6 @@ angular.module('CrearDesafio.controllers', ['ngCordova'])
   $scope.desafio.jugador="";
   $scope.desafio.valor=50;
   $scope.desafio.pregunta = "Aqui ponga su desafio";
-  //$scope.desafio.quienGano="";
- // $scope.desafio.quienPerdio="";
  $scope.desafio.ganador = "";
 
     $scope.arrayDias = Array.from(Array(6).keys()); 
@@ -57,6 +55,14 @@ angular.module('CrearDesafio.controllers', ['ngCordova'])
           });
           return;
         }
+          try{
+             $cordovaNativeAudio.play('correcto');
+              $cordovaVibration.vibrate(300);
+           }
+           catch(e)
+           {
+              console.log("Plugins solo en celulares POR FAVOR!! :)");
+           }
         $scope.usuario.credito -= $scope.desafio.valor;
         UsuarioService.Modificar($scope.usuario);
         DesafioService.Agregar($scope.desafio);

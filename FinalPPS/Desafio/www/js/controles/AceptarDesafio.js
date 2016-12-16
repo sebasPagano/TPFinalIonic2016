@@ -1,6 +1,6 @@
 angular.module('aceptarDesafio.controllers', ['ngCordova'])
 
-.controller('AceptarDesafioCtrl', function($scope, $stateParams,$ionicPopup, $timeout,$state,$cordovaVibration,UsuarioService,DesafioService) {
+.controller('AceptarDesafioCtrl', function($scope, $stateParams,$ionicPopup, $timeout,$state,$cordovaVibration,$cordovaNativeAudio,UsuarioService,DesafioService) {
 
 var index = $stateParams.desafio;
   console.log(index);
@@ -13,7 +13,7 @@ var index = $stateParams.desafio;
       // Esta validacion no va a estar cuando se permita que un desafio sea aceptado por mas de 1 usuario
     if ($scope.desafio.jugador != "" && $scope.desafio.jugador != $scope.usuario.$id){
          $ionicPopup.alert({
-              title: 'Desafio Aceptado por otro usuario',
+              title: 'Este desafio ya fue aceptado',
               cssClass:'salida',
               okType: 'button-energized',
           });
@@ -35,7 +35,15 @@ var id = firebase.auth().currentUser.uid;
   $scope.AceptarDesafio=function(){
       $scope.desafio.jugador = $scope.usuario.$id;
       if($scope.usuario.credito < $scope.desafio.valor){
-        
+          
+            try{
+             $cordovaNativeAudio.play('incorrecto');
+           }
+           catch(e)
+           {
+              console.log("Plugins solo en celulares POR FAVOR!! :)");
+           }
+
           $ionicPopup.alert({
               title: 'Saldo Insuficiente.',
               cssClass:'salida',
@@ -44,6 +52,14 @@ var id = firebase.auth().currentUser.uid;
         return;
       }else
       {
+
+      try{
+         $cordovaNativeAudio.play('correcto');
+       }
+       catch(e)
+       {
+          console.log("Plugins solo en celulares POR FAVOR!! :)");
+       }
       $scope.usuario.credito -= $scope.desafio.valor;
       UsuarioService.Modificar($scope.usuario);
       DesafioService.Modificar($scope.desafio);

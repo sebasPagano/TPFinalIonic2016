@@ -1,7 +1,7 @@
 
 angular.module('desafio.controllers', ['ngCordova'])
 
-.controller('DesafioCtrl', function($scope, $ionicPopup, $timeout,$state,$cordovaVibration,UsuarioService,DesafioService) {
+.controller('DesafioCtrl', function($scope, $ionicPopup, $timeout,$state,$cordovaVibration,$cordovaNativeAudio,UsuarioService,DesafioService) {
 
 	$scope.mostrar=false;
   $scope.aceptados=false;
@@ -22,7 +22,7 @@ angular.module('desafio.controllers', ['ngCordova'])
           if(!desafio.computado && ((desafio.fechaFin - $scope.DateNow) / 1000)<=0)
           {
 
-            Computar(desafio, id); 
+            ComputarDesafio(desafio, id); 
           }
           else
           {
@@ -40,7 +40,7 @@ angular.module('desafio.controllers', ['ngCordova'])
           });
   }
 
-  function Computar(desafio, id){
+  function ComputarDesafio(desafio, id){
     // NO COMPUTADOS
     if(!desafio.computado && ((desafio.fechaFin - $scope.DateNow) / 1000)<=0){
         // NO FUE ACEPTADO
@@ -107,8 +107,6 @@ angular.module('desafio.controllers', ['ngCordova'])
                                 computado: true,
                                 jugador: desafio.jugador,
                                 valor: desafio.valor,
-                                //quienGano: desafio.jugador,
-                                //quienPerdio: desafio.creador,
                                 ganador : desafio.jugador,
                                 fechaInicio: desafio.fechaInicio,
                                 fechaFin: desafio.fechaFin,
@@ -119,7 +117,7 @@ angular.module('desafio.controllers', ['ngCordova'])
                   })
                  } else {
                   UsuarioService.BuscarPorId(desafio.creador).then(function(respuesta){
-                    //console.info(respuesta);
+              
                     var usuario=respuesta;
                     usuario.credito += (parseInt(desafio.valor)*2);
                     UsuarioService.Modificar(usuario);
@@ -129,8 +127,6 @@ angular.module('desafio.controllers', ['ngCordova'])
                                 computado: true,
                                 jugador: desafio.jugador,
                                 valor: desafio.valor,
-                                //quienGano: desafio.creador,
-                               // quienPerdio: desafio.jugador,
                                 ganador: desafio.creador,
                                 fechaInicio: desafio.fechaInicio,
                                 fechaFin: desafio.fechaFin,
@@ -148,7 +144,15 @@ angular.module('desafio.controllers', ['ngCordova'])
   }
 
     $scope.verDesafio = function(index){
+    try{
+    $cordovaVibration.vibrate(300);
+     } 
+     catch(Exception){
+    console.log("Vibracion",Exception.Message);
+     }
+
     $state.go('app.aceptarDesafio', {desafio:index} );
+
   }
 
 

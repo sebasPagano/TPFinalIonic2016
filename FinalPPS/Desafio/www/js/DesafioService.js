@@ -9,7 +9,7 @@ angular.module('desafios.service', ["firebase"])
 
             this.TraerTodos = function(){
                     return this.arrayDesafios.$loaded().then(function(datos){
-                        console.log("desafios",datos);
+                   
                         return datos;
                     })
                 };
@@ -17,7 +17,7 @@ angular.module('desafios.service', ["firebase"])
             this.Agregar = function(desafio){
                 this.arrayDesafios.$add(desafio).then(function(ref){
                     var id = ref.key;
-                    console.log("Se agrego el id " + id);
+                    console.log("Agregado Desafio");
                 });
             };
 
