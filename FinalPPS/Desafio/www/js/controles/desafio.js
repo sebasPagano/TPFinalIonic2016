@@ -3,9 +3,7 @@ angular.module('desafio.controllers', ['ngCordova'])
 
 .controller('DesafioCtrl', function($scope, $ionicPopup, $timeout,$state,$cordovaVibration,$cordovaNativeAudio,UsuarioService,DesafioService) {
 
-	$scope.mostrar=false;
-  $scope.aceptados=false;
-  $scope.todos=true;
+ 
   $scope.datos=[];
   $scope.usuario = {};
   $scope.DateNow = new Date().getTime();
@@ -22,7 +20,7 @@ angular.module('desafio.controllers', ['ngCordova'])
           if(!desafio.computado && ((desafio.fechaFin - $scope.DateNow) / 1000)<=0)
           {
 
-            ComputarDesafio(desafio, id); 
+            Desafio(desafio, id); 
           }
           else
           {
@@ -34,14 +32,14 @@ angular.module('desafio.controllers', ['ngCordova'])
   catch(err)
   {
       $ionicPopup.alert({
-              title: 'No se pudo obtener los desafios. Revise su conexion.',
+              title: 'Revise su conexion.',
               cssClass:'salida',
               okType: 'button-energized',
           });
   }
 
-  function ComputarDesafio(desafio, id){
-    // NO COMPUTADOS
+  function Desafio(desafio, id){
+
     if(!desafio.computado && ((desafio.fechaFin - $scope.DateNow) / 1000)<=0){
         // NO FUE ACEPTADO
         if(desafio.jugador == '') {
@@ -67,10 +65,10 @@ angular.module('desafio.controllers', ['ngCordova'])
                     });          
           })
 
-          // SI ES EL CREADOR SE LE MUESTRA UN MENSAJE INFORMANDO
+         
           if(firebase.auth().currentUser.uid == desafio.creador)
           {
-            //ReproducirPositivo();
+           
               $ionicPopup.alert({
                 title: 'Nadie acepto el desafio!!',
                 template: 'No hubo jugadores por lo tanto no ha ganado dinero, se le devuelve el monto apostado',
@@ -84,7 +82,7 @@ angular.module('desafio.controllers', ['ngCordova'])
           // FUE ACEPTADO
           if(desafio.jugador)
           {
-            // SI ES EL CREADOR DEBE DECIDIR QUIEN GANA
+           
             if(firebase.auth().currentUser.uid == desafio.creador)
             {
                var confirmPopup = $ionicPopup.confirm({

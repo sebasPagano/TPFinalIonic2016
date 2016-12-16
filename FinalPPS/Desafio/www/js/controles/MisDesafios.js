@@ -4,9 +4,7 @@ angular.module('MisDesafios.controllers', ['ngCordova'])
 .controller('MisDesafiosCtrl', function($scope, $ionicModal, $timeout,$state,$cordovaVibration,DesafioService,UsuarioService) {
 
 $scope.userID = firebase.auth().currentUser.uid;
-  $scope.mostrar=true;
-  $scope.todos=false;
-  $scope.aceptados=false;
+
   $scope.DateNow = new Date().getTime();
   $scope.datos=[];
 
@@ -23,7 +21,7 @@ $scope.userID = firebase.auth().currentUser.uid;
   catch(err)
   {
       $ionicPopup.alert({
-              title: 'No se pudo obtener los desafios. Revise su conexion.',
+              title: 'Revise su conexion.',
               cssClass:'salida',
               okType: 'button-energized',
           });

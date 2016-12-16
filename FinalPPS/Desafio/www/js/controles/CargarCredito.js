@@ -3,12 +3,6 @@ angular.module('credito.controllers', ['ngCordova'])
 
 .controller('CargarCreditoCtrl', function($scope, $timeout,$ionicPopup,$state,$cordovaVibration,$cordovaNativeAudio,CreditoService,UsuarioService,$cordovaBarcodeScanner) {
 
-
- var f = new Date();
-  var hora = f.getHours();
-  var tiempo = false;
-
-
 	$scope.UsuarioLogueado=firebase.auth().currentUser;
 	var id = $scope.UsuarioLogueado.uid;
 	$scope.ListadoCreditos={};
@@ -64,7 +58,7 @@ angular.module('credito.controllers', ['ngCordova'])
     }
     catch(err)
     {
-      console.log("Escanear solo en celulares");
+      console.log("Plugins en celulares");
     }
   }
 
