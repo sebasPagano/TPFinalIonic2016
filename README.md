@@ -1,7 +1,8 @@
 # TPFinalIonic2016
 juego online, Generador de desafíos / batalla naval
 
-Alumno: Sebastian Pagano
+<h1>Datos del alumno: </h1>
+Alumno: Sebastian Pagano</br>
 Curso: 4ºA
 
 <h1>Proyecto Final</h1>
