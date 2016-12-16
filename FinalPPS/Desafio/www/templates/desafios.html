@@ -6,7 +6,7 @@
         <div ng-repeat="desafio in datos">
             <div ng-show="!desafio.computado && desafio.disponible && desafio.creador!=userID">
               <br>
-              <ion-item>
+              <div  style="border: 3px solid black;">
                   <center><h2><strong>{{desafio.pregunta}}</strong></h2><br>
                   <h3>{{desafio.valor}}$</h3></br> 
                
@@ -16,7 +16,7 @@
                    </br>  
                      <button class="button button-positive" ng-click="verDesafio($index)">VER</button>
                   </center>
-              </ion-item>
+                </div>
               <br>
             </div>
         </div>

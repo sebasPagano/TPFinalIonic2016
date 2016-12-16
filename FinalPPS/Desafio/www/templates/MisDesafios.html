@@ -4,7 +4,7 @@
         <div ng-repeat="desafio in datos">
             <div ng-if="desafio.creador == userID">
               <br>
-              <ion-item>
+                <div  style="border: 3px solid black;">
                     <center><h2><strong>{{desafio.pregunta}}</strong></h2><br>
                   <h3>{{desafio.valor}}$</h3><br> 
                   
@@ -12,8 +12,8 @@
 
                    <font color="red">{{days}} dias</br> {{hours}} hrs {{minutes}} min {{seconds}}sec</h3></font></timer>
                   </center>
-                
-              </ion-item>
+                </div>
+              
                   </center>
               <br>
             </div>

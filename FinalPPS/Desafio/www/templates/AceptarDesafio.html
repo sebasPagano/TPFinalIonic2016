@@ -1,25 +1,25 @@
 <ion-view class="pagina">
   <ion-content scroll="false"; style="width:100%; background: url(img/desafio6jpg.jpg) no-repeat center;background-size:cover;">
     <center>
-      <div class="item">
+      
 
-        <div class="card">
+        
           <div class="item item-text-wrap">
-            <ion-item>
+            <div  style="border: 3px solid black;">
                <h3>Valor de la apuesta: {{desafio.valor}}$</h3>
                <label>Nombre Desafio: {{desafio.pregunta}}</label></br>
               <label>Saldo disponible: {{credito}}$</label>
-            </ion-item>
+            </div>
           </div>
-        </div>
+        
 
         <div ng-if="desafio.creador != userID">
-          <button class="button button-positive" ng-click="AceptarDesafio()">
+          <button  class="button button-balanced" ng-click="AceptarDesafio()">
             Aceptar Desafio
           </button>
         </div>
 
-    </div>
+    
 	</center>
   </ion-content>
 </ion-view>
